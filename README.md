@@ -15,3 +15,5 @@ Fast start:
 - run script by docker-compose up --build
 
 We use redis as db, so if script failed you can continue parsing.
+
+Result will be printed to docker console as list of links when all links will fetched.
