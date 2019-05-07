@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  myredis:
+    image: redis
+    container_name: myredis
+    hostname: myredis
+    networks:
+      - main
+  app:
+    build: .
+    command: sh -c "python3 parse.py"
+    depends_on:
+      - myredis
+    hostname: app
+    image: app-image
+    networks:
+      - main
+    restart: on-failure
+    container_name: app
+    environment:
+      - START_URL=https://somesite.com
+networks:
+  main:
